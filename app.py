@@ -13,7 +13,7 @@ st.set_page_config(page_title="OphthalmoAI SaaS", layout="wide")
 
 # ================== DATABASE ================== #
 
-DB_URL = "postgresql://postgres.xclohcwyxgcoflamjzzp:bhanu19853022@aws-1-ap-south-1.pooler.supabase.com:6543/postgres"
+DB_URL = st.secrets["DB_URL"]
 
 try:
     conn = psycopg2.connect(
@@ -22,11 +22,11 @@ try:
         connect_timeout=10
     )
     cur = conn.cursor()
-
 except Exception as e:
     st.error("Database connection failed ❌")
     st.write(e)
     st.stop()
+
 
 # ================== STYLING ================== #
 
